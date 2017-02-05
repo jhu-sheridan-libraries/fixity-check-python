@@ -133,8 +133,9 @@ def main():
                 msg_body += '\n\nFiles reported as added (%d):' % len(changes['adds'])
                 for change in changes['adds']:
                     msg_body += '\n  %s' % change.split(' ', 1)[1]
-        elif errors or warnings:
-            msg_body += '\n\n For more information, run:\n  %s check -a %s' % (FIXI_CMD, filePath)
+
+        if errors or warnings:
+            msg_body += '\n\n For more information, run:\n  %s check -a %s' % (fixi_path, filePath)
 
         if args.add_new and len(changes['adds']) > 0:
             msg_body += '\n\nAutomatically adding new files (%d) to fixity database:' % len(changes['adds'])
